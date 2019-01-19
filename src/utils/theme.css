@@ -44,13 +44,13 @@ pre[class*='language-'] {
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   background: #212121;
-  border-radius: 1em;
+  border-radius: 10px;
 }
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
   padding: 0.1em;
-  border-radius: 1em;
+  border-radius: 10px;
   white-space: normal;
 }
 
@@ -139,7 +139,7 @@ pre[class*='language-'] {
 }
 
 .gatsby-highlight {
-  border-radius: 1em;
+  border-radius: 10px;
   background: #212121;
   -webkit-overflow-scrolling: touch;
   overflow: auto;
@@ -148,4 +148,5 @@ pre[class*='language-'] {
 .gatsby-highlight pre[class*='language-'] {
   float: left;
   min-width: 100%;
+  overflow: initial;
 }
