@@ -3,8 +3,20 @@ import Wordpress2016 from 'typography-theme-wordpress-2016'
 
 Wordpress2016.overrideThemeStyles = () => {
   return {
+    a: {
+      color: '#26b3a0',
+    },
     'a.gatsby-resp-image-link': {
-      boxShadow: `none`,
+      boxShadow: 'none',
+    },
+    'a.anchor': {
+      boxShadow: 'none',
+    },
+    'p code': {
+      fontSize: '1rem',
+    },
+    'li code': {
+      fontSize: '1rem',
     },
   }
 }

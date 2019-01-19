@@ -8,15 +8,16 @@ Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
 right at the coast of the Semantics, a large language ocean. A small river named
 Duden flows by their place and supplies it with the necessary regelialia.
 
-```swift
+```swift{7-11}
 private func createBookingUrl(origin: String, dest: String,
                               params: [String: String]) -> URL? {
   let baseUrl = Env.isProduction()
   ? "https://www.rome2rio.com/tickets"
   : "https://working.rome2rio.com/tickets"
 
-  let url = "\(baseUrl)/\(origin.URLEscaped)/\(dest.URLEscaped)?"
-    + params.enumerated().reduce("") { result, data in
+  // Talking about this line
+  let url = "\(baseUrl)/\(origin.urlEscaped)/\(dest.urlEscaped)?" 
+  + params.enumerated().reduce("") { result, data in
         let index = data.0
         let (key, value) = data.1
         let prefix = index == 0 ? "" : "&"
