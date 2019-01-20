@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Building Things`,
     author: `Mark Robinson`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `A blog about building apps from pen to production`,
     siteUrl: `https://buildingthings.io`,
     social: {
       twitter: `SparkyRobinson`,
@@ -62,13 +62,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Building Things`,
+        short_name: `Building Things`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#26b3a0`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/icon.png`,
       },
     },
     `gatsby-plugin-offline`,
