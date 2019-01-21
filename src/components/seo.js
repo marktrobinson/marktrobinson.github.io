@@ -3,13 +3,17 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ description, meta, title, heroImage, lang = 'en' }) {
   return (
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description
+        const { siteMetadata } = data.site
+        const metaDescription = description || siteMetadata.description
+        const metaImage = heroImage
+          ? `${siteMetadata.siteUrl}${heroImage}`
+          : null
+
         return (
           <Helmet
             htmlAttributes={{
@@ -52,11 +56,17 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
             ]
               .concat(
-                keywords.length > 0
-                  ? {
-                      name: `keywords`,
-                      content: keywords.join(`, `),
-                    }
+                metaImage
+                  ? [
+                      {
+                        property: 'og:image',
+                        content: metaImage,
+                      },
+                      {
+                        name: 'twitter:image',
+                        content: metaImage,
+                      },
+                    ]
                   : []
               )
               .concat(meta)}
@@ -70,15 +80,15 @@ function SEO({ description, lang, meta, keywords, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  keywords: [],
+  heroImage: null,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
+  heroImage: PropTypes.string,
 }
 
 export default SEO
@@ -90,6 +100,7 @@ const detailsQuery = graphql`
         title
         description
         author
+        siteUrl
       }
     }
   }
